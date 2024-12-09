@@ -1,6 +1,6 @@
 const Hero = ({ firstName, lastName, photo }) => {
   return (
-    <div className="flex justify-between px-6 sm:px-4 lg:px-8 gap-8">
+    <div className="flex justify-between px-6 sm:px-4 lg:px-8 gap-8 mb-9">
       <Greeting firstName={firstName} />
       <Profile firstName={firstName} lastName={lastName} photo={photo} />
     </div>
@@ -9,11 +9,13 @@ const Hero = ({ firstName, lastName, photo }) => {
 
 const Greeting = ({ firstName }) => {
   return (
-    <div className="text-left">
-      <h1 className="text-6xl font-bold mb-4">Good Morning, {firstName}</h1>
-      <p className="text-2xl">
-        Check all your incoming and outgoing transactions here
-      </p>
+    <div className="flex text-left">
+      <div>
+        <h1 className="text-6xl font-bold mb-4">Good Morning, {firstName}</h1>
+        <p className="text-2xl">
+          Check all your incoming and outgoing transactions here
+        </p>
+      </div>
     </div>
   );
 };

@@ -1,10 +1,12 @@
 import { Search } from "lucide-react";
+import { useState } from "react";
 
 const History = ({ transactions }) => {
   return (
     <div className="px-6 sm:px-4 lg:px-8 mb-9">
       <SearchAndFilter />
       <TransactionList transactions={transactions} />
+      <Pagination />
     </div>
   );
 };
@@ -89,15 +91,56 @@ const TransactionList = ({ transactions }) => {
                 <td className={`px-4 py-2 border-b text-left text-red-500`}>
                   - {formatter.format(transaction.amount)}
                 </td>
-              ) : (
+              ) : transaction.type === "CREDIT" ? (
                 <td className={`px-4 py-2 border-b text-left text-green-500`}>
                   + {formatter.format(transaction.amount)}
                 </td>
+              ) : (
+                <td className={`px-4 py-2 border-b text-left`}></td>
               )}
             </tr>
           ))}
         </tbody>
       </table>
+    </div>
+  );
+};
+
+const Pagination = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const totalPages = 3;
+
+  const changePage = (page) => setCurrentPage(page);
+
+  return (
+    <div className="flex justify-start mt-4 font-semibold">
+      <button
+        onClick={() => changePage(1)}
+        disabled={currentPage === 1}
+        className="px-4 py-2 bg-white text-primary rounded-l-md disabled:opacity-50 disabled:text-gray-700 border border-gray-400"
+      >
+        First
+      </button>
+      {[...Array(totalPages)].map((_, index) => (
+        <button
+          key={index}
+          onClick={() => changePage(index + 1)}
+          className={`px-4 py-2 border border-gray-400 ${
+            currentPage === index + 1
+              ? "bg-primary text-white"
+              : "bg-white text-primary"
+          }`}
+        >
+          {index + 1}
+        </button>
+      ))}
+      <button
+        onClick={() => changePage(currentPage + 1)}
+        disabled={currentPage === totalPages}
+        className="px-4 py-2 bg-white text-primary rounded-r-md disabled:opacity-50 disabled:text-gray-700 border border-gray-400"
+      >
+        Next
+      </button>
     </div>
   );
 };

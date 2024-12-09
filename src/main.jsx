@@ -4,13 +4,17 @@ import "./index.css";
 import App from "./App.jsx";
 import TransferPage from "./pages/TransferPage.jsx";
 import TopUpPage from "./pages/TopUpPage.jsx";
+import Navbar from "./components/Navbar.jsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/transfer" element={<TransferPage />} />
-      <Route path="/topup" element={<TopUpPage />} />
-    </Routes>
+    <Navbar />
+    <div>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/transfer" element={<TransferPage />} />
+        <Route path="/topup" element={<TopUpPage />} />
+      </Routes>
+    </div>
   </BrowserRouter>
 );

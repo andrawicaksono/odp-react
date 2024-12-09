@@ -1,10 +1,13 @@
 import { NavLink } from "react-router";
 import walledLogo from "../assets/walled.png";
+import modeToggle from "../assets/mode-toggle.png";
 
-const Navbar = ({ active }) => {
+const Navbar = () => {
+  let activeNavLink = "ml-8 font-bold text-primary";
+  let inactiveNavLink = "ml-8";
   return (
-    <nav className="bg-white border-b border-gray-200 mb-9">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="bg-white mb-9 px-6 sm:px-4 lg:px-8">
+      <div className="max-w-7xl">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <div className="flex items-center gap-2">
@@ -13,13 +16,11 @@ const Navbar = ({ active }) => {
               </NavLink>
             </div>
           </div>
-          <div className="flex items-center gap-8">
-            <nav>
+          <div className="flex items-center">
+            <div className="flex items-center border-r-2 border-[#B3B3B3] pr-4 h-10">
               <NavLink
-                className={
-                  active === "dashboard"
-                    ? "ml-8 font-bold text-primary"
-                    : "ml-8"
+                className={({ isActive }) =>
+                  isActive ? activeNavLink : inactiveNavLink
                 }
                 to="/"
                 end
@@ -27,8 +28,8 @@ const Navbar = ({ active }) => {
                 Dashboard
               </NavLink>
               <NavLink
-                className={
-                  active === "transfer" ? "ml-8 font-bold text-primary" : "ml-8"
+                className={({ isActive }) =>
+                  isActive ? activeNavLink : inactiveNavLink
                 }
                 to="/transfer"
                 end
@@ -36,24 +37,21 @@ const Navbar = ({ active }) => {
                 Transfer
               </NavLink>
               <NavLink
-                className={
-                  active === "topup" ? "ml-8 font-bold text-primary" : "ml-8"
+                className={({ isActive }) =>
+                  isActive ? activeNavLink : inactiveNavLink
                 }
                 to="/topup"
                 end
               >
                 Top Up
               </NavLink>
-              <NavLink
-                className={
-                  active === "signout" ? "ml-8 font-bold text-primary" : "ml-8"
-                }
-                to="#"
-                end
-              >
+              <NavLink className="ml-8" to="#" end>
                 Sign Out
               </NavLink>
-            </nav>
+            </div>
+            <button className="ml-4 h-7 w-7">
+              <img src={modeToggle} alt="" />
+            </button>
           </div>
         </div>
       </div>

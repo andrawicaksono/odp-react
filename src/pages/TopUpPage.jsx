@@ -1,11 +1,7 @@
 import Navbar from "../components/Navbar";
 
 const TopUpPage = () => {
-  return (
-    <>
-      <Navbar active="topup" />
-    </>
-  );
+  return <></>;
 };
 
 export default TopUpPage;

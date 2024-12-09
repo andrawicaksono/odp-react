@@ -1,6 +1,6 @@
 const Hero = ({ firstName, lastName, photo }) => {
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between px-6 sm:px-4 lg:px-8 gap-8">
       <Greeting firstName={firstName} />
       <Profile firstName={firstName} lastName={lastName} photo={photo} />
     </div>
@@ -25,8 +25,12 @@ const Profile = ({ firstName, lastName, photo }) => {
         <h3 className="font-bold">{`${firstName} ${lastName}`}</h3>
         <p>Personal Account</p>
       </div>
-      <div className="overflow-hidden h-24 w-24 border-4 rounded-full border-solid border-primary">
-        <img src={photo} alt={`${firstName} ${lastName}`} />
+      <div className="flex justify-center items-center">
+        <img
+          className="max-h-24 max-w-24 border-4 rounded-full border-solid border-primary"
+          src={photo}
+          alt={`${firstName} ${lastName}`}
+        />
       </div>
     </div>
   );

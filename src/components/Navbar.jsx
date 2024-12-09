@@ -17,7 +17,7 @@ const Navbar = () => {
             </div>
           </div>
           <div className="flex items-center">
-            <div className="flex items-center border-r-2 border-[#B3B3B3] pr-4 h-10">
+            <div className="flex items-center border-r border-[#B3B3B3] pr-4 h-10">
               <NavLink
                 className={({ isActive }) =>
                   isActive ? activeNavLink : inactiveNavLink

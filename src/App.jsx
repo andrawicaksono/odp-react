@@ -42,12 +42,9 @@ function App() {
     <div>
       <Navbar />
       <div>
-        <Hero firstName="Chelsea" lastName="Immanuela" photo={photo} />
-        <AccountStats
-          accountNo={account.accountNo}
-          balance={formatter.format(Math.abs(account.amount))}
-        />
-        <History transactions={transactions} />
+        <Hero />
+        <AccountStats />
+        <History />
       </div>
     </div>
   );

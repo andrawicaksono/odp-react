@@ -1,10 +1,30 @@
 import { Eye, Plus, Send } from "lucide-react";
+import { formatter } from "../helper/balanceFormatter";
+import { useEffect, useState } from "react";
 
-const AccountStats = ({ accountNo, balance }) => {
+const AccountStats = () => {
+  const [account, setAccount] = useState({});
+
+  useEffect(() => {
+    const fetchAccount = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/balance");
+        if (!response.ok) throw new Error("Failed to fetch");
+        const data = await response.json();
+        setAccount(data);
+        console.log(account);
+      } catch (err) {
+        alert(err.message);
+      }
+    };
+
+    fetchAccount();
+  }, []);
+
   return (
     <div className="flex gap-12 px-6 sm:px-4 lg:px-8 mb-9">
-      <AccountInfo accountNo={accountNo} />
-      <BalanceInfo balance={balance} />
+      <AccountInfo accountNo={account.accountNo} />
+      <BalanceInfo balance={formatter.format(account.amount)} />
     </div>
   );
 };

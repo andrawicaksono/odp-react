@@ -1,4 +1,8 @@
-const Hero = ({ firstName, lastName, photo }) => {
+import photo from "../assets/photo.jpeg";
+
+const Hero = () => {
+  const firstName = "Chelsea";
+  const lastName = "Immanuela";
   return (
     <div className="flex justify-between px-6 sm:px-4 lg:px-8 gap-8 mb-9">
       <Greeting firstName={firstName} />

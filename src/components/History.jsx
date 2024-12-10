@@ -1,12 +1,12 @@
 import { Search } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { formatter } from "../helper/balanceFormatter";
 
-const History = ({ transactions }) => {
+const History = () => {
   return (
     <div className="px-6 sm:px-4 lg:px-8 mb-9">
       <SearchAndFilter />
-      <TransactionList transactions={transactions} />
+      <TransactionList />
       <Pagination />
     </div>
   );
@@ -54,7 +54,24 @@ const SearchAndFilter = () => {
   );
 };
 
-const TransactionList = ({ transactions }) => {
+const TransactionList = () => {
+  const [transactions, setTransactions] = useState([]);
+
+  useEffect(() => {
+    const fetchAccount = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/transactions");
+        if (!response.ok) throw new Error("Failed to fetch");
+        const data = await response.json();
+        setTransactions(data);
+      } catch (err) {
+        alert(err.message);
+      }
+    };
+
+    fetchAccount();
+  }, []);
+
   return (
     <div className="container py-6 min-w-full">
       <table className="min-w-full table-auto border-collapse border border-gray-100">

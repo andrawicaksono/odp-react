@@ -1,4 +1,4 @@
-import { Eye, Plus, Send } from "lucide-react";
+import { Eye, EyeOff, Plus, Send } from "lucide-react";
 import { currencyFormatter } from "../helper/balanceFormatter";
 import { useEffect, useState } from "react";
 
@@ -41,6 +41,12 @@ const AccountInfo = ({ accountNo }) => {
 };
 
 const BalanceInfo = ({ balance }) => {
+  const [isEyeActive, setIsEyeActive] = useState(false);
+
+  const handleEye = () => {
+    setIsEyeActive((currentState) => !currentState);
+  };
+
   return (
     <div className="flex-1 text-left items-center bg-white rounded-3xl p-6  w-full h-56">
       <div className="flex flex-col justify-center h-full">
@@ -48,9 +54,15 @@ const BalanceInfo = ({ balance }) => {
         <div className="flex items-center justify-between">
           <div>
             <div className="flex items-center gap-16">
-              <p className="text-3xl font-semibold">Rp{balance}</p>
-              <button>
-                <Eye className="text-gray-400" size={36} />
+              <p className="text-3xl font-semibold">
+                Rp{isEyeActive ? balance : "***************"}
+              </p>
+              <button onClick={handleEye}>
+                {isEyeActive ? (
+                  <Eye className="text-gray-400" size={36} />
+                ) : (
+                  <EyeOff className="text-gray-400" size={36} />
+                )}
               </button>
             </div>
           </div>

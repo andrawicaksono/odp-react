@@ -11,7 +11,7 @@ const AccountStats = ({ accountNo, balance }) => {
 
 const AccountInfo = ({ accountNo }) => {
   return (
-    <div className="flex items-center justify-center h-full w-full h-56 w-72 bg-primary rounded-3xl p-6">
+    <div className="flex items-center justify-center h-56 w-72 bg-primary rounded-3xl p-6">
       <div>
         <h4 className="font-normal text-2xl">Account No</h4>
         <p className="font-bold text-4xl">{accountNo}</p>
@@ -22,7 +22,7 @@ const AccountInfo = ({ accountNo }) => {
 
 const BalanceInfo = ({ balance }) => {
   return (
-    <div className="flex-1 text-left items-center bg-white rounded-3xl p-6 h-full w-full h-56">
+    <div className="flex-1 text-left items-center bg-white rounded-3xl p-6  w-full h-56">
       <div className="flex flex-col justify-center h-full">
         <h4 className="text-2xl font-normal">Balance</h4>
         <div className="flex items-center justify-between">

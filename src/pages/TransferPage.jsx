@@ -1,7 +1,11 @@
 import Navbar from "../components/Navbar";
 
 const TransferPage = () => {
-  return <></>;
+  return (
+    <>
+      <Navbar />
+    </>
+  );
 };
 
 export default TransferPage;

@@ -19,18 +19,22 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white mb-9 px-6 sm:px-4 lg:px-8">
+    <nav className="bg-white dark:bg-black text-white mb-9 px-6 sm:px-4 lg:px-8">
       <div>
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <div className="flex items-center gap-2">
               <NavLink to="/" end>
-                <img src={walledLogo} alt="Walled" className="h-7" />
+                <img
+                  src={walledLogo}
+                  alt="Walled"
+                  className="h-7 dark:bg-white"
+                />
               </NavLink>
             </div>
           </div>
           <div className="flex items-center">
-            <div className="flex items-center border-r border-[#B3B3B3] pr-4 h-10">
+            <div className="flex items-center border-r border-gray-400 pr-4 h-10">
               <NavLink
                 className={({ isActive }) =>
                   isActive ? activeNavLink : inactiveNavLink

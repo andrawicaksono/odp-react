@@ -55,7 +55,7 @@ const BalanceInfo = ({ balance }) => {
         <h4 className="text-2xl font-normal">Balance</h4>
         <div className="flex items-center justify-between">
           <div>
-            <div className="flex items-center gap-16">
+            <div className="flex items-center min-w-96 justify-between">
               <p className="text-3xl font-semibold">
                 Rp{isEyeActive ? balance : "***************"}
               </p>

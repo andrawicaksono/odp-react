@@ -1,13 +1,15 @@
 import { NavLink, useNavigate } from "react-router";
 import walledLogo from "../assets/walled.png";
 import { useAuth } from "../contexts/AuthContext";
-import { Sun } from "lucide-react";
+import { Sun, Moon } from "lucide-react";
+import { useTheme } from "../contexts/ThemeContext";
 
 const Navbar = () => {
   let activeNavLink = "ml-8 font-bold text-primary";
   let inactiveNavLink = "ml-8";
 
   const { logout } = useAuth();
+  const { isDark, toggleTheme } = useTheme();
 
   const navigate = useNavigate();
 
@@ -60,8 +62,12 @@ const Navbar = () => {
                 Sign Out
               </button>
             </div>
-            <button className="ml-4 h-7 w-7">
-              <Sun color="#F8AB39" size={28} />
+            <button className="ml-4 h-7 w-7" onClick={toggleTheme}>
+              {isDark ? (
+                <Moon color="#F8AB39" size={28} />
+              ) : (
+                <Sun color="#F8AB39" size={28} />
+              )}
             </button>
           </div>
         </div>

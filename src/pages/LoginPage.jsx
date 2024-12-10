@@ -3,6 +3,8 @@ import loginBanner from "../assets/login-banner.png";
 import { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { useNavigate } from "react-router";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "../contexts/ThemeContext";
 
 const LoginPage = () => {
   const [username, setUsername] = useState("");
@@ -19,6 +21,8 @@ const LoginPage = () => {
       navigate("/");
     }
   };
+
+  const { isDark, toggleTheme } = useTheme();
 
   return (
     <div className="flex min-h-screen overflow-hidden">
@@ -73,6 +77,14 @@ const LoginPage = () => {
               Daftar di sini
             </a>
           </p>
+
+          <button className="ml-4 h-7 w-7" onClick={toggleTheme}>
+            {isDark ? (
+              <Moon color="#F8AB39" size={28} />
+            ) : (
+              <Sun color="#F8AB39" size={28} />
+            )}
+          </button>
         </div>
       </div>
 

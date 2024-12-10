@@ -7,37 +7,40 @@ import TopUpPage from "./pages/TopUpPage.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
+import { ThemeProvider } from "./contexts/ThemeContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
-    <AuthProvider>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <ProtectedRoute>
-              <App />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/transfer"
-          element={
-            <ProtectedRoute>
-              <TransferPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/topup"
-          element={
-            <ProtectedRoute>
-              <TopUpPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="/login" element={<LoginPage />} />
-      </Routes>
-    </AuthProvider>
+    <ThemeProvider>
+      <AuthProvider>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <App />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/transfer"
+            element={
+              <ProtectedRoute>
+                <TransferPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/topup"
+            element={
+              <ProtectedRoute>
+                <TopUpPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/login" element={<LoginPage />} />
+        </Routes>
+      </AuthProvider>
+    </ThemeProvider>
   </BrowserRouter>
 );

@@ -1,6 +1,7 @@
 import { Eye, EyeOff, Plus, Send } from "lucide-react";
 import { currencyFormatter } from "../helper/helper";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 const AccountStats = () => {
   const [account, setAccount] = useState({});
@@ -41,6 +42,7 @@ const AccountInfo = ({ accountNo }) => {
 };
 
 const BalanceInfo = ({ balance }) => {
+  const navigate = useNavigate();
   const [isEyeActive, setIsEyeActive] = useState(false);
 
   const handleEye = () => {
@@ -67,10 +69,16 @@ const BalanceInfo = ({ balance }) => {
             </div>
           </div>
           <div className="flex justify-end gap-2">
-            <button className="p-1 bg-teal-600 text-white dark:text-black rounded-xl">
+            <button
+              className="p-1 bg-teal-600 text-white dark:text-black rounded-xl"
+              onClick={() => navigate("topup")}
+            >
               <Plus size={32} />
             </button>
-            <button className="p-1 bg-teal-600 text-white dark:text-black rounded-xl">
+            <button
+              className="p-1 bg-teal-600 text-white dark:text-black rounded-xl"
+              onClick={() => navigate("transfer")}
+            >
               <Send size={32} />
             </button>
           </div>

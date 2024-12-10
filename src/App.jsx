@@ -3,16 +3,50 @@ import Hero from "./components/Hero";
 import photo from "./assets/photo.jpeg";
 import AccountStats from "./components/AccountStats";
 import History from "./components/History";
-import transactions from "./assets/transactions.json";
 import Navbar from "./components/Navbar";
+import { useEffect, useState } from "react";
+import { formatter } from "./helper/balanceFormatter";
 
 function App() {
+  const [account, setAccount] = useState({});
+  const [transactions, setTransactions] = useState([]);
+
+  useEffect(() => {
+    const fetchAccount = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/balance");
+        if (!response.ok) throw new Error("Failed to fetch");
+        const data = await response.json();
+        setAccount(data);
+      } catch (err) {
+        // alert(err.message);
+      }
+    };
+
+    const fetchTransactions = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/transactions");
+        if (!response.ok) throw new Error("Failed to fetch");
+        const data = await response.json();
+        setTransactions(data);
+      } catch (err) {
+        // alert(err.message);
+      }
+    };
+
+    fetchAccount();
+    fetchTransactions();
+  }, []);
+
   return (
     <div>
       <Navbar />
       <div>
         <Hero firstName="Chelsea" lastName="Immanuela" photo={photo} />
-        <AccountStats accountNo="100899" balance="10.000.000,00" />
+        <AccountStats
+          accountNo={account.accountNo}
+          balance={formatter.format(Math.abs(account.amount))}
+        />
         <History transactions={transactions} />
       </div>
     </div>

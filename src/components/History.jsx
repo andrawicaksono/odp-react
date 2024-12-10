@@ -1,5 +1,6 @@
 import { Search } from "lucide-react";
 import { useState } from "react";
+import { formatter } from "../helper/balanceFormatter";
 
 const History = ({ transactions }) => {
   return (
@@ -54,12 +55,6 @@ const SearchAndFilter = () => {
 };
 
 const TransactionList = ({ transactions }) => {
-  let formatter = new Intl.NumberFormat("de-DE", {
-    style: "decimal",
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  });
-
   return (
     <div className="container py-6 min-w-full">
       <table className="min-w-full table-auto border-collapse border border-gray-100">
@@ -76,24 +71,24 @@ const TransactionList = ({ transactions }) => {
           {transactions.map((transaction, index) => (
             <tr key={index} className="odd:bg-gray-100 even:bg-white">
               <td className="px-4 py-2 border-b text-left">
-                {transaction.datetime}
+                {transaction.date}
               </td>
               <td className="px-4 py-2 border-b text-left">
                 {transaction.type}
               </td>
               <td className="px-4 py-2 border-b text-left">
-                {transaction.fromTo}
+                {transaction.from}
               </td>
               <td className="px-4 py-2 border-b text-left">
                 {transaction.description}
               </td>
               {transaction.type === "DEBIT" ? (
                 <td className={`px-4 py-2 border-b text-left text-red-500`}>
-                  - {formatter.format(transaction.amount)}
+                  - {formatter.format(Math.abs(transaction.amount))}
                 </td>
               ) : transaction.type === "CREDIT" ? (
                 <td className={`px-4 py-2 border-b text-left text-green-500`}>
-                  + {formatter.format(transaction.amount)}
+                  + {formatter.format(Math.abs(transaction.amount))}
                 </td>
               ) : (
                 <td className={`px-4 py-2 border-b text-left`}></td>

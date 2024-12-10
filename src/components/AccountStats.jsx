@@ -11,7 +11,7 @@ const AccountStats = ({ accountNo, balance }) => {
 
 const AccountInfo = ({ accountNo }) => {
   return (
-    <div className="flex items-center justify-center h-56 w-72 sm:max-h-56 sm:max-w-72 bg-primary rounded-3xl p-6">
+    <div className="flex items-center justify-center h-full w-full max-h-56 max-w-72 bg-primary rounded-3xl p-6">
       <div>
         <h4 className="font-normal text-2xl">Account No</h4>
         <p className="font-bold text-4xl">{accountNo}</p>

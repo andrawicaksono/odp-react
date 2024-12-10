@@ -15,9 +15,9 @@ const SearchAndFilter = () => {
   return (
     <div className="flex justify-between items-center">
       {/* Search */}
-      <div className="relative flex items-center bg-white rounded-lg  max-w-4xl">
+      <div className="relative flex items-center bg-white rounded-lg max-w-xs w-full">
         <div className="absolute left-4">
-          <Search className="h-4 w-4 text-gray-400" />
+          <Search size={16} className="text-gray-400" />
         </div>
 
         <input
@@ -61,7 +61,7 @@ const TransactionList = ({ transactions }) => {
   });
 
   return (
-    <div className="container py-6">
+    <div className="container py-6 min-w-full">
       <table className="min-w-full table-auto border-collapse border border-gray-100">
         <thead>
           <tr className="bg-white">

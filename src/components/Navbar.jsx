@@ -7,7 +7,7 @@ const Navbar = () => {
   let inactiveNavLink = "ml-8";
   return (
     <nav className="bg-white mb-9 px-6 sm:px-4 lg:px-8">
-      <div className="max-w-7xl">
+      <div>
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">
             <div className="flex items-center gap-2">

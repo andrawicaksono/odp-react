@@ -44,7 +44,7 @@ const TopUpPage = () => {
   };
 
   return (
-    <div>
+    <div className="dark:text-white">
       <Navbar />
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="mx-auto w-full max-w-lg">
@@ -53,9 +53,9 @@ const TopUpPage = () => {
           </h2>
         </div>
 
-        <div className="mt-6 mx-auto w-full max-w-lg shadow-md bg-white p-14 rounded-3xl">
+        <div className="mt-6 mx-auto w-full max-w-lg shadow-md bg-white dark:bg-black p-14 rounded-3xl">
           <form className="space-y-6" onSubmit={handleSubmit}>
-            <div className="bg-gray-50 px-6 py-3 rounded-2xl">
+            <div className="bg-gray-50 dark:bg-gray-950 px-6 py-3 rounded-2xl">
               <label
                 htmlFor="amount"
                 className="block text-sm text-left font-semibold"
@@ -75,20 +75,20 @@ const TopUpPage = () => {
                     onChange={handleAmountInputChange}
                     onKeyDown={blockInvalidChar}
                     required
-                    className="pl-14 text-3xl font-semibold block w-full bg-transparent px-3 py-1.5 border-b border-black focus-visible:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                    className="pl-14 text-3xl font-semibold block w-full bg-transparent px-3 py-1.5 border-b border-black dark:border-white focus-visible:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                   />
                 </div>
               </div>
             </div>
 
-            <div className="flex bg-gray-50 shadow-sm rounded-2xl pr-2">
-              <label className="py-3 px-8 rounded-2xl bg-gray-200 font-bold">
+            <div className="flex bg-gray-50 dark:bg-gray-950 shadow-sm rounded-2xl pr-2">
+              <label className="py-3 px-8 rounded-2xl bg-gray-200 dark:bg-gray-800 font-bold">
                 From
               </label>
               <select
                 value={selectedSource}
                 onChange={(e) => setSelectedSource(e.target.value)}
-                className="pl-1 bg-transparent rounded-r-2xl text-sm w-full focus-visible:outline-none"
+                className="pl-1 bg-gray-50 dark:bg-gray-950 rounded-r-2xl text-sm w-full focus-visible:outline-none"
               >
                 {sources.map((source) => (
                   <option key={source} value={source}>
@@ -98,7 +98,7 @@ const TopUpPage = () => {
               </select>
             </div>
 
-            <div className="bg-gray-50 px-6 rounded-2xl">
+            <div className="bg-gray-50 dark:bg-gray-950 px-6 rounded-2xl">
               <div className="mt-2 relative bg-transparent">
                 <div className="absolute inset-y-0 left-0 flex items-center font-semibold text-3xl">
                   <label
@@ -124,7 +124,7 @@ const TopUpPage = () => {
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-xl bg-primary px-3 py-1.5 text- font-semibold text-white drop-shadow-xl hover:drop-shadow-none hover:shadow-inner"
+                className="flex w-full justify-center rounded-xl bg-primary px-3 py-1.5 text- font-semibold text-white dark:text-black drop-shadow-xl hover:drop-shadow-none hover:shadow-inner"
               >
                 Transfer
               </button>

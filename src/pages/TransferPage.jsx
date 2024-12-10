@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import {
   blockInvalidChar,
@@ -12,14 +12,29 @@ const TransferPage = () => {
     {
       accountNo: "234245287",
       accountName: "Andra Wicaksono",
-      balance: 50000000,
     },
     {
       accountNo: "638235182",
       accountName: "Andra Wicaksono",
-      balance: 100000000,
     },
   ];
+
+  const [balance, setBalance] = useState(0);
+
+  useEffect(() => {
+    const fetchAccount = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/balance");
+        if (!response.ok) throw new Error("Failed to fetch");
+        const data = await response.json();
+        setBalance(data.amount);
+      } catch (err) {
+        alert(err.message);
+      }
+    };
+
+    fetchAccount();
+  }, []);
 
   const [selectedAccount, setSelectedAccount] = useState(accounts[0]);
 
@@ -29,20 +44,20 @@ const TransferPage = () => {
   };
 
   const [amountInput, setAmountInput] = useState("");
-  const [rawAmountInput, setrawAmountInput] = useState(0);
+  const [rawAmountInput, setRawAmountInput] = useState(0);
 
   const handleAmountInputChange = (e) => {
     const rawValue = e.target.value.replace(/[^\d]/g, "");
     const numericValue = parseInt(rawValue, 10) || 0;
 
-    if (numericValue <= selectedAccount.balance) {
+    if (numericValue <= balance) {
       setAmountInput(inputCurrencyFormatter.format(numericValue));
-      setrawAmountInput(numericValue);
+      setRawAmountInput(numericValue);
     }
 
     if (numericValue <= 0) {
       setAmountInput("");
-      setrawAmountInput(0);
+      setRawAmountInput(0);
     }
   };
 
@@ -55,7 +70,9 @@ const TransferPage = () => {
     alert(
       `Sukses transfer sebesar Rp${currencyFormatter.format(
         rawAmountInput
-      )}\nNotes: ${notesInput}`
+      )} ke ${selectedAccount.accountNo} (${
+        selectedAccount.accountName
+      })\nNotes: ${notesInput}`
     );
 
     navigate("/");
@@ -118,7 +135,7 @@ const TransferPage = () => {
             <div className="flex gap-1 text-left">
               <p>Balance:</p>
               <p className="text-green-500">{`IDR ${currencyFormatter.format(
-                selectedAccount.balance
+                balance
               )}`}</p>
             </div>
 

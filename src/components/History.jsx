@@ -77,11 +77,21 @@ const TransactionList = () => {
       <table className="min-w-full table-auto border-collapse border border-gray-100 dark:border-gray-900">
         <thead>
           <tr className="bg-white dark:bg-black">
-            <th className="px-4 py-2 text-left border-b">Date & Time</th>
-            <th className="px-4 py-2 text-left border-b">Type</th>
-            <th className="px-4 py-2 text-left border-b">From/To</th>
-            <th className="px-4 py-2 text-left border-b">Description</th>
-            <th className="px-4 py-2 text-left border-b">Amount</th>
+            <th className="px-4 py-2 text-left border-b dark:border-black">
+              Date & Time
+            </th>
+            <th className="px-4 py-2 text-left border-b dark:border-black">
+              Type
+            </th>
+            <th className="px-4 py-2 text-left border-b dark:border-black">
+              From/To
+            </th>
+            <th className="px-4 py-2 text-left border-b dark:border-black">
+              Description
+            </th>
+            <th className="px-4 py-2 text-left border-b dark:border-black">
+              Amount
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -90,28 +100,34 @@ const TransactionList = () => {
               key={index}
               className="odd:bg-gray-100 dark:odd:bg-gray-900 even:bg-white dark:even:bg-black"
             >
-              <td className="px-4 py-2 border-b text-left">
+              <td className="px-4 py-2 border-b dark:border-black text-left">
                 {datetimeFormatter(transaction.date)}
               </td>
-              <td className="px-4 py-2 border-b text-left">
+              <td className="px-4 py-2 border-b dark:border-black text-left">
                 {transaction.type}
               </td>
-              <td className="px-4 py-2 border-b text-left">
+              <td className="px-4 py-2 border-b dark:border-black text-left">
                 {transaction.from}
               </td>
-              <td className="px-4 py-2 border-b text-left">
+              <td className="px-4 py-2 border-b dark:border-black text-left">
                 {transaction.description}
               </td>
               {transaction.type === "DEBIT" ? (
-                <td className={`px-4 py-2 border-b text-left text-red-500`}>
+                <td
+                  className={`px-4 py-2 border-b border-black text-left text-red-500`}
+                >
                   - {currencyFormatter.format(Math.abs(transaction.amount))}
                 </td>
               ) : transaction.type === "CREDIT" ? (
-                <td className={`px-4 py-2 border-b text-left text-green-500`}>
+                <td
+                  className={`px-4 py-2 border-b border-black text-left text-green-500`}
+                >
                   + {currencyFormatter.format(Math.abs(transaction.amount))}
                 </td>
               ) : (
-                <td className={`px-4 py-2 border-b text-left`}></td>
+                <td
+                  className={`px-4 py-2 border-b border-black text-left`}
+                ></td>
               )}
             </tr>
           ))}

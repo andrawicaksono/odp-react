@@ -114,13 +114,13 @@ const TransactionList = () => {
               </td>
               {transaction.type === "DEBIT" ? (
                 <td
-                  className={`px-4 py-2 border-b border-black text-left text-red-500`}
+                  className={`px-4 py-2 border-b dark:border-black text-left text-red-500`}
                 >
                   - {currencyFormatter.format(Math.abs(transaction.amount))}
                 </td>
               ) : transaction.type === "CREDIT" ? (
                 <td
-                  className={`px-4 py-2 border-b border-black text-left text-green-500`}
+                  className={`px-4 py-2 border-b dark:border-black text-left text-green-500`}
                 >
                   + {currencyFormatter.format(Math.abs(transaction.amount))}
                 </td>

@@ -19,7 +19,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-white dark:bg-black text-white mb-9 px-6 sm:px-4 lg:px-8">
+    <nav className="bg-white dark:bg-black dark:text-white mb-9 px-6 sm:px-4 lg:px-8">
       <div>
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center">

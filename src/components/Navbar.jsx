@@ -2,6 +2,7 @@ import { NavLink, useNavigate } from "react-router";
 import walledLogo from "../assets/walled.png";
 import modeToggle from "../assets/mode-toggle.png";
 import { useAuth } from "../contexts/AuthContext";
+import { Sun } from "lucide-react";
 
 const Navbar = () => {
   let activeNavLink = "ml-8 font-bold text-primary";
@@ -61,7 +62,7 @@ const Navbar = () => {
               </button>
             </div>
             <button className="ml-4 h-7 w-7">
-              <img src={modeToggle} alt="" />
+              <Sun color="#F8AB39" size={28} />
             </button>
           </div>
         </div>

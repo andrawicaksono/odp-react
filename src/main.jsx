@@ -4,7 +4,6 @@ import "./index.css";
 import App from "./App.jsx";
 import TransferPage from "./pages/TransferPage.jsx";
 import TopUpPage from "./pages/TopUpPage.jsx";
-import Navbar from "./components/Navbar.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import { AuthProvider } from "./contexts/AuthContext.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";

@@ -1,5 +1,5 @@
 import { Eye, EyeOff, Plus, Send } from "lucide-react";
-import { currencyFormatter } from "../helper/balanceFormatter";
+import { currencyFormatter } from "../helper/helper";
 import { useEffect, useState } from "react";
 
 const AccountStats = () => {

@@ -1,9 +1,6 @@
 import { Search } from "lucide-react";
 import { useState, useEffect } from "react";
-import {
-  currencyFormatter,
-  datetimeFormatter,
-} from "../helper/balanceFormatter";
+import { currencyFormatter, datetimeFormatter } from "../helper/helper";
 
 const History = () => {
   return (

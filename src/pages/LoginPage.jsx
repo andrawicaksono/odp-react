@@ -42,7 +42,7 @@ const LoginPage = () => {
                   type="text"
                   required
                   placeholder="Username"
-                  className="block w-full rounded-md bg-white px-3 py-1.5 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400"
+                  className="block w-full rounded-md bg-white dark:bg-black px-3 py-1.5 outline outline-1 -outline-offset-1 outline-gray-300 dark:outline-gray-500 placeholder:text-gray-400"
                 />
               </div>
             </div>
@@ -56,7 +56,7 @@ const LoginPage = () => {
                   type="password"
                   placeholder="Password"
                   required
-                  className="block w-full rounded-md bg-white px-3 py-1.5 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400"
+                  className="block w-full rounded-md bg-white dark:bg-black px-3 py-1.5 outline outline-1 -outline-offset-1 outline-gray-300 dark:outline-gray-500 placeholder:text-gray-400"
                 />
               </div>
             </div>
@@ -64,14 +64,14 @@ const LoginPage = () => {
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text- font-semibold text-white drop-shadow-xl hover:drop-shadow-none hover:shadow-inner"
+                className="flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text- font-semibold text-white dark:text-black drop-shadow-xl hover:drop-shadow-none hover:shadow-inner"
               >
                 Login
               </button>
             </div>
           </form>
 
-          <p className="mt-10 text-center text-sm/6 text-gray-500">
+          <p className="mt-10 text-center text-sm/6 text-gray-500 dark:text-gray-300">
             Belum punya akun?{" "}
             <a href="#" className="font-semibold text-primary">
               Daftar di sini

@@ -1,6 +1,5 @@
 import { NavLink, useNavigate } from "react-router";
 import walledLogo from "../assets/walled.png";
-import modeToggle from "../assets/mode-toggle.png";
 import { useAuth } from "../contexts/AuthContext";
 import { Sun } from "lucide-react";
 

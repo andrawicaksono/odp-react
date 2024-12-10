@@ -1,5 +1,5 @@
 import { Eye, Plus, Send } from "lucide-react";
-import { formatter } from "../helper/balanceFormatter";
+import { currencyFormatter } from "../helper/balanceFormatter";
 import { useEffect, useState } from "react";
 
 const AccountStats = () => {
@@ -24,7 +24,7 @@ const AccountStats = () => {
   return (
     <div className="flex gap-12 px-6 sm:px-4 lg:px-8 mb-9">
       <AccountInfo accountNo={account.accountNo} />
-      <BalanceInfo balance={formatter.format(account.amount)} />
+      <BalanceInfo balance={currencyFormatter.format(account.amount)} />
     </div>
   );
 };

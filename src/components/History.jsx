@@ -1,6 +1,9 @@
 import { Search } from "lucide-react";
 import { useState, useEffect } from "react";
-import { formatter } from "../helper/balanceFormatter";
+import {
+  currencyFormatter,
+  datetimeFormatter,
+} from "../helper/balanceFormatter";
 
 const History = () => {
   return (
@@ -88,7 +91,7 @@ const TransactionList = () => {
           {transactions.map((transaction, index) => (
             <tr key={index} className="odd:bg-gray-100 even:bg-white">
               <td className="px-4 py-2 border-b text-left">
-                {transaction.date}
+                {datetimeFormatter(transaction.date)}
               </td>
               <td className="px-4 py-2 border-b text-left">
                 {transaction.type}
@@ -101,11 +104,11 @@ const TransactionList = () => {
               </td>
               {transaction.type === "DEBIT" ? (
                 <td className={`px-4 py-2 border-b text-left text-red-500`}>
-                  - {formatter.format(Math.abs(transaction.amount))}
+                  - {currencyFormatter.format(Math.abs(transaction.amount))}
                 </td>
               ) : transaction.type === "CREDIT" ? (
                 <td className={`px-4 py-2 border-b text-left text-green-500`}>
-                  + {formatter.format(Math.abs(transaction.amount))}
+                  + {currencyFormatter.format(Math.abs(transaction.amount))}
                 </td>
               ) : (
                 <td className={`px-4 py-2 border-b text-left`}></td>

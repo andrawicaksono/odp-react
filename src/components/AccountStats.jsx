@@ -22,7 +22,7 @@ const AccountStats = () => {
   }, []);
 
   return (
-    <div className="flex gap-12 px-6 sm:px-4 lg:px-8 mb-9">
+    <div className="flex gap-12 px-6 sm:px-4 lg:px-8 mb-9 dark:text-white">
       <AccountInfo accountNo={account.accountNo} />
       <BalanceInfo balance={currencyFormatter.format(account.amount)} />
     </div>
@@ -48,7 +48,7 @@ const BalanceInfo = ({ balance }) => {
   };
 
   return (
-    <div className="flex-1 text-left items-center bg-white rounded-3xl p-6  w-full h-56">
+    <div className="flex-1 text-left items-center bg-white dark:bg-black rounded-3xl p-6  w-full h-56">
       <div className="flex flex-col justify-center h-full">
         <h4 className="text-2xl font-normal">Balance</h4>
         <div className="flex items-center justify-between">
@@ -67,10 +67,10 @@ const BalanceInfo = ({ balance }) => {
             </div>
           </div>
           <div className="flex justify-end gap-2">
-            <button className="p-1 bg-teal-600 text-white rounded-xl">
+            <button className="p-1 bg-teal-600 text-white dark:text-black rounded-xl">
               <Plus size={32} />
             </button>
-            <button className="p-1 bg-teal-600 text-white rounded-xl">
+            <button className="p-1 bg-teal-600 text-white dark:text-black rounded-xl">
               <Send size={32} />
             </button>
           </div>

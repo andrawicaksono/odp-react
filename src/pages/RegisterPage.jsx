@@ -1,25 +1,28 @@
 import walledLogo from "../assets/walled.png";
 import authBanner from "../assets/auth-banner.png";
 import { useState } from "react";
-import { useAuth } from "../contexts/AuthContext";
 import { NavLink, useNavigate } from "react-router";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "../contexts/ThemeContext";
 
-const LoginPage = () => {
+const RegisterPage = () => {
+  const [fullName, setFullName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
-  const { login } = useAuth();
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleRegister = (e) => {
     e.preventDefault();
-    const isLoggedIn = login(username, password);
-    if (isLoggedIn) {
-      navigate("/");
-    }
+    navigate("/login");
+
+    const firstName = fullName.split(" ")[0];
+    const lastName = fullName.split(" ")[1];
+
+    alert(
+      `Berhasil mendaftar!\nNama Lengkap: ${firstName} ${lastName}\nUsername: ${username}\nNo HP: ${phoneNumber}`
+    );
   };
 
   const { isDark, toggleTheme } = useTheme();
@@ -56,7 +59,21 @@ const LoginPage = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" onSubmit={handleLogin}>
+          <form className="space-y-6" onSubmit={handleRegister}>
+            <div>
+              <div className="mt-2">
+                <input
+                  id="fullname"
+                  name="fullname"
+                  onChange={(e) => setFullName(e.target.value)}
+                  type="text"
+                  required
+                  placeholder="Nama Lengkap"
+                  className="block w-full rounded-md bg-white dark:bg-black px-3 py-1.5 outline outline-1 -outline-offset-1 outline-gray-300 dark:outline-gray-500 placeholder:text-gray-400"
+                />
+              </div>
+            </div>
+
             <div>
               <div className="mt-2">
                 <input
@@ -86,19 +103,40 @@ const LoginPage = () => {
             </div>
 
             <div>
+              <div className="mt-2">
+                <input
+                  id="phonenumber"
+                  name="phonenumber"
+                  onChange={(e) => {
+                    const value = e.target.value;
+                    if (/^\d*$/.test(value)) {
+                      setPhoneNumber(value);
+                    }
+                  }}
+                  value={phoneNumber}
+                  maxLength={12}
+                  type="text"
+                  placeholder="No Hp"
+                  required
+                  className="block w-full rounded-md bg-white dark:bg-black px-3 py-1.5 outline outline-1 -outline-offset-1 outline-gray-300 dark:outline-gray-500 placeholder:text-gray-400"
+                />
+              </div>
+            </div>
+
+            <div>
               <button
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-primary px-3 py-1.5 text- font-semibold text-white dark:text-black drop-shadow-xl hover:drop-shadow-none hover:shadow-inner"
               >
-                Login
+                Daftar
               </button>
             </div>
           </form>
 
           <p className="mt-10 text-center text-sm/6 text-gray-500 dark:text-gray-300">
-            Belum punya akun?{" "}
-            <NavLink to="/register" className="font-semibold text-primary">
-              Daftar di sini
+            Sudah punya akun?{" "}
+            <NavLink to="/login" className="font-semibold text-primary">
+              Login di sini
             </NavLink>
           </p>
         </div>
@@ -111,4 +149,4 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+export default RegisterPage;

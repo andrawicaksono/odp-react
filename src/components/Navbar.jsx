@@ -66,12 +66,28 @@ const Navbar = () => {
                 Sign Out
               </button>
             </div>
-            <button className="ml-4 h-7 w-7" onClick={toggleTheme}>
-              {isDark ? (
-                <Moon color="#F8AB39" size={28} />
-              ) : (
-                <Sun color="#F8AB39" size={28} />
-              )}
+            <button
+              className="ml-4 h-7 w-7 relative overflow-hidden flex items-center justify-center"
+              onClick={toggleTheme}
+            >
+              <div
+                className={`absolute transition-transform duration-300 ${
+                  isDark
+                    ? "transform translate-y-0 opacity-100"
+                    : "transform translate-y-full opacity-0"
+                }`}
+              >
+                <Moon key="moon" color="#F8AB39" size={28} />
+              </div>
+              <div
+                className={`absolute transition-transform duration-300 ${
+                  isDark
+                    ? "transform -translate-y-full opacity-0"
+                    : "transform translate-y-0 opacity-100"
+                }`}
+              >
+                <Sun key="sun" color="#F8AB39" size={28} />
+              </div>
             </button>
           </div>
         </div>

@@ -27,6 +27,29 @@ const LoginPage = () => {
   return (
     <div className="flex min-h-screen overflow-hidden dark:text-white">
       <div className="flex min-h-full flex-1 flex-col justify-center items-center px-6 py-12 lg:px-8">
+        <button
+          className="h-7 w-7 relative overflow-hidden flex items-center justify-center mb-9"
+          onClick={toggleTheme}
+        >
+          <div
+            className={`absolute transition-transform duration-300 ${
+              isDark
+                ? "transform translate-y-0 opacity-100"
+                : "transform translate-y-full opacity-0"
+            }`}
+          >
+            <Moon key="moon" color="#F8AB39" size={28} />
+          </div>
+          <div
+            className={`absolute transition-transform duration-300 ${
+              isDark
+                ? "transform -translate-y-full opacity-0"
+                : "transform translate-y-0 opacity-100"
+            }`}
+          >
+            <Sun key="sun" color="#F8AB39" size={28} />
+          </div>
+        </button>
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
           <img alt="Walled" src={walledLogo} className="mx-auto h-10 w-auto" />
         </div>
@@ -77,14 +100,6 @@ const LoginPage = () => {
               Daftar di sini
             </a>
           </p>
-
-          <button className="ml-4 h-7 w-7" onClick={toggleTheme}>
-            {isDark ? (
-              <Moon color="#F8AB39" size={28} />
-            ) : (
-              <Sun color="#F8AB39" size={28} />
-            )}
-          </button>
         </div>
       </div>
 

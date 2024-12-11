@@ -61,9 +61,15 @@ const BalanceInfo = ({ balance }) => {
               </p>
               <button onClick={handleEye}>
                 {isEyeActive ? (
-                  <Eye className="text-gray-400" size={36} />
+                  <Eye
+                    className="text-gray-400 hover:text-blue-400"
+                    size={36}
+                  />
                 ) : (
-                  <EyeOff className="text-gray-400" size={36} />
+                  <EyeOff
+                    className="text-gray-400 hover:text-blue-400"
+                    size={36}
+                  />
                 )}
               </button>
             </div>
